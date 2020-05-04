@@ -1,0 +1,10 @@
+[package]
+name = "tide_web"
+version = "0.1.0"
+authors = ["Daniel <qiuzhanghua@icloud.com>"]
+edition = "2018"
+
+[dependencies]
+tide = "0.8"
+async-std = { version = "1.5", features = ["attributes"] }
+http-types = "1.2"
