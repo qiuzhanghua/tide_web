@@ -1,6 +1,7 @@
 # Tide
 
 ## Build
+
 ```bash
 DATABASE_URL="mysql://app:app@localhost:3306/app" cargo build --release
 target/release/tide_web
@@ -10,12 +11,16 @@ target/release/tide_web
 
 QPS = query per second
 
-| Content    | QPS  |
-|:-----------|:-----|
-| Hello      | 100k |
-| Redis(6.0) | 28k  |
-| MySQL      | 30k  |
-| PostgreSQL | 26k  |
+```bash
+sudo sysctl -w net.inet.tcp.msl=500
+```
+
+| Content    | TIME_WAIT=15s | TIME_WAIT=0.5s |
+|:-----------|:--------------|:---------------|
+| Hello      | 100k          | 120k           |
+| Redis(6.0) | 28k           | 38k            |
+| MySQL      | 30k           | 31k            |
+| PostgreSQL | 26k           | 29K            |
 
 ```text
 ➜  ~ wrk -t12 -c200 -d30s http://127.0.0.1:8080/
@@ -57,8 +62,10 @@ Requests/sec:  26405.03
 Transfer/sec:      5.44MB
 ```
 
-##  Env
+## Env
+
 ### Hardware
+
 ```text
 iMac(Retina 5K, 27-inch, 2019) CPU 3GHz, 6 Core i5
 Memory 32G 2667MHz DDR4
