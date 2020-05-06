@@ -15,12 +15,12 @@ QPS = query per second
 sudo sysctl -w net.inet.tcp.msl=500
 ```
 
-| Content    | TIME_WAIT=15s | TIME_WAIT=0.5s |
-|:-----------|:--------------|:---------------|
-| Hello      | 100k          | 120k           |
-| Redis(6.0) | 28k           | 38k            |
-| MySQL      | 30k           | 31k            |
-| PostgreSQL | 26k           | 29K            |
+| Content    | TIME_WAIT=15s | TIME_WAIT=0.5s | Old Mac(0.5s) |
+|:-----------|:--------------|:---------------|:--------------|
+| Hello      | 100k          | 120k           | 55k           |
+| Redis(6.0) | 28k           | 38k            | 15.5K         |
+| MySQL      | 30k           | 31k            | 17.5K         |
+| PostgreSQL | 26k           | 29K            | 14k           |
 
 ```text
 ➜  ~ wrk -t12 -c200 -d30s http://127.0.0.1:8080/
@@ -69,5 +69,12 @@ Transfer/sec:      5.44MB
 ```text
 iMac(Retina 5K, 27-inch, 2019) CPU 3GHz, 6 Core i5
 Memory 32G 2667MHz DDR4
+```
+
+### Old Mac
+```text
+MacBook Pro (Retina, Mid 2012)
+CPU 2.6GHz, 4 core, Intel Core i7
+Memory 16GB 1600 MHz DDR3
 ```
 
