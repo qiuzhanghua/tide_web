@@ -37,6 +37,7 @@ async fn redis(_req: Request<DB>) -> std::result::Result<tide::Response, http_ty
 }
 
 async fn my(req: Request<DB>) -> std::result::Result<tide::Response, http_types::Error> {
+    use sqlx_core::mysql::MySqlCursor;
     match sqlx::query!(r###"SELECT version() v"###)
         .fetch_one(&req.state().my_pool)
         .await
