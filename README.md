@@ -78,3 +78,16 @@ CPU 2.6GHz, 4 core, Intel Core i7
 Memory 16GB 1600 MHz DDR3
 ```
 
+Deno 1.0(Hello) about 47K qps
+```text
+➜  ~ wrk -t12 -c200 -d30s http://127.0.0.1:8080/
+Running 30s test @ http://127.0.0.1:8080/
+  12 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     4.12ms    2.08ms 130.63ms   99.01%
+    Req/Sec     3.95k   293.50     7.81k    79.67%
+  1413777 requests in 30.02s, 57.98MB read
+  Socket errors: connect 0, read 90, write 0, timeout 0
+Requests/sec:  47098.61
+Transfer/sec:      1.93MB
+```
